@@ -1,0 +1,8 @@
+mutation {
+    createPost(post: {
+        authorId: "023946ee-6173-4d49-8bac-c0b9e4a7ba88",
+        category: "Software development",
+        description: "A complete guide for software development",
+        title: "Software development guide"
+    })
+}

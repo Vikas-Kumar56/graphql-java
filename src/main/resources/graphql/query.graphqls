@@ -1,0 +1,10 @@
+type Query {
+    helloWorld: String!
+    greetingMessage(firstName: String!, secondName: String): String!
+    message: Message!
+    rollDice: [Int!]!
+    authors: [Author]!
+    recentPosts(count: Int!, offset: Int!): [Post]!
+    comments(count: Int!, offset: Int!): [Comment]!
+    customer(phoneNumber: PhoneNumber!, email: Email!): Customer!
+}

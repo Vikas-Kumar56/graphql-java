@@ -1,0 +1,11 @@
+#RFC-339 compliant date time
+scalar Date
+scalar DateTime
+scalar Time
+
+#phone number scalar type
+scalar PhoneNumber
+
+scalar SocialMediaLink
+
+scalar Email

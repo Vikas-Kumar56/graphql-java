@@ -1,0 +1,34 @@
+{
+  "data": {
+    "recentPosts": [
+      {
+        "title": "post title",
+        "author": {
+          "id": "b8addf5e-43f8-4165-9a5f-ab73094a5b1e",
+          "email": "peteer@gmail.com"
+        }
+      },
+      {
+        "title": "spring boot",
+        "author": {
+          "id": "bffc75ba-c8e0-4178-93c9-20eb6cafed75",
+          "email": "Smith@gmail.com"
+        }
+      },
+      {
+        "title": "REACT",
+        "author": {
+          "id": "44b0ed8f-351c-4368-a472-cadd17444947",
+          "email": "John@gmail.com"
+        }
+      },
+      {
+        "title": "JS",
+        "author": {
+          "id": "44b0ed8f-351c-4368-a472-cadd17444947",
+          "email": "John@gmail.com"
+        }
+      }
+    ]
+  }
+}

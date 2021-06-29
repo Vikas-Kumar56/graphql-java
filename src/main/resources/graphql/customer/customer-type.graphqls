@@ -1,0 +1,6 @@
+type Customer {
+    birthDay: Date!
+    workStartTime: Time!
+    bornAt: DateTime!
+    profileLink: SocialMediaLink
+}

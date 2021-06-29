@@ -1,0 +1,6 @@
+input PostInput {
+    title: String!
+    description: String!
+    category: String!
+    authorId: ID!
+}
