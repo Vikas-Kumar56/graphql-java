@@ -1,3 +1,4 @@
 directive @NotBlank(message: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
 directive @NotEmpty(message: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
 directive @Size(min: Int = 10, max: Int = 5000, message: String!) on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+directive @uppercase on FIELD | FIELD_DEFINITION
