@@ -8,7 +8,7 @@ import java.util.UUID;
 @Configuration
 public class MessageMutationResolver implements GraphQLMutationResolver {
 
-    public UUID createMessage(UUID id, String title, Integer[] luckyNumbers) {
+    public UUID createMessage(UUID id, String title, Integer[] luckyNumbers, Integer value) {
         return UUID.randomUUID();
     }
 }

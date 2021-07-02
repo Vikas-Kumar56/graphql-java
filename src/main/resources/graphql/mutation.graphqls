@@ -4,5 +4,6 @@ type Mutation {
     createComment(comment: CommentInput!): ID!
     createMessage(id: ID! @NotBlank(message: "createMessage.NotBlank.message"),
         title: String! @Size(min: 20, max: 100, message: "createMessage.Size.message"),
-         luckyNumbers: [Int] @NotEmpty(message: "createMessage.NotEmpty.message")): ID!
+         luckyNumbers: [Int] @NotEmpty(message: "createMessage.NotEmpty.message"),
+         value: Int @PositiveOrZero(message: "createMessage.PositiveOrZero.message")): ID!
 }
