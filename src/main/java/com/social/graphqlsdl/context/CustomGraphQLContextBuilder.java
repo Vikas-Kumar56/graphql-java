@@ -3,6 +3,7 @@ package com.social.graphqlsdl.context;
 import graphql.kickstart.execution.context.DefaultGraphQLContext;
 import graphql.kickstart.execution.context.GraphQLContext;
 import graphql.kickstart.servlet.context.DefaultGraphQLServletContext;
+import graphql.kickstart.servlet.context.DefaultGraphQLWebSocketContext;
 import graphql.kickstart.servlet.context.GraphQLServletContextBuilder;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +29,10 @@ public class CustomGraphQLContextBuilder implements GraphQLServletContextBuilder
 
     @Override
     public GraphQLContext build(Session session, HandshakeRequest handshakeRequest) {
-        throw new IllegalStateException("UnSupported");
+        return DefaultGraphQLWebSocketContext.createWebSocketContext()
+                .with(session)
+                .with(handshakeRequest)
+                .build();
     }
 
     @Override
