@@ -6,6 +6,7 @@ import com.social.graphqlsdl.dto.AuthorDto;
 import com.social.graphqlsdl.dto.CommentDto;
 import com.social.graphqlsdl.dto.PostDto;
 import graphql.kickstart.tools.GraphQLResolver;
+import graphql.schema.DataFetchingEnvironment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +31,8 @@ public class PostFieldResolver implements GraphQLResolver<PostDto> {
         this.commentService = commentService;
     }
 
-    public CompletableFuture<AuthorDto> getAuthor(PostDto postDto) {
+    public CompletableFuture<AuthorDto> getAuthor(PostDto postDto, DataFetchingEnvironment environment) {
+        log.info("{} author request", environment.getExecutionId());
         log.info("auhtor main thread id : {}", Thread.currentThread().getId());
         return CompletableFuture.supplyAsync(() -> {
             log.info("author thread id : {}", Thread.currentThread().getId());

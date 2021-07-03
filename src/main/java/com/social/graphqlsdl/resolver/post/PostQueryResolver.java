@@ -3,10 +3,13 @@ package com.social.graphqlsdl.resolver.post;
 import com.social.graphqlsdl.Service.PostService;
 import com.social.graphqlsdl.dto.PostDto;
 import graphql.kickstart.tools.GraphQLQueryResolver;
+import graphql.schema.DataFetchingEnvironment;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Slf4j
 @Component
 public class PostQueryResolver implements GraphQLQueryResolver {
 
@@ -16,7 +19,10 @@ public class PostQueryResolver implements GraphQLQueryResolver {
         this.postService = postService;
     }
 
-    public List<PostDto> recentPosts(int count, int offset){
-        return postService.getRecentPosts(count,offset);
+    public List<PostDto> recentPosts(int count, int offset, DataFetchingEnvironment environment){
+        log.info("{} request started", environment.getExecutionId());
+        List<PostDto> recentPosts = postService.getRecentPosts(count, offset);
+        log.info("{} request completed", environment.getExecutionId());
+        return recentPosts;
     }
 }
