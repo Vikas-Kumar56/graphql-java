@@ -30,6 +30,8 @@ dependencies {
 	compile 'com.graphql-java:graphql-java-extended-validation:16.0.0'
 
 	runtimeOnly 'com.graphql-java-kickstart:graphiql-spring-boot-starter:11.1.0'
+	// to embed GraphQL Playground tool
+	runtimeOnly 'com.graphql-java-kickstart:playground-spring-boot-starter:11.1.0'
 	runtimeOnly 'com.graphql-java-kickstart:voyager-spring-boot-starter:11.1.0'
 
 	compileOnly 'org.projectlombok:lombok'
