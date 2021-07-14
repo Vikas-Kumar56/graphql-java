@@ -1,6 +1,7 @@
 package com.social.graphqlsdl.resolver.post;
 
 import com.social.graphqlsdl.Service.PostService;
+import com.social.graphqlsdl.context.CustomGraphQLContext;
 import com.social.graphqlsdl.dto.PostDto;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import graphql.schema.DataFetchingEnvironment;
@@ -23,6 +24,9 @@ public class PostQueryResolver implements GraphQLQueryResolver {
     }
 
     public List<PostDto> recentPosts(int count, int offset, DataFetchingEnvironment environment){
+        CustomGraphQLContext context = environment.getContext();
+
+        log.info("user id {}", context.getUserId());
 
         Set<String> fields = environment.getSelectionSet().getFields()
                 .stream()
