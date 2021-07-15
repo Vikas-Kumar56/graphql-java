@@ -1,5 +1,6 @@
 package com.social.graphqlsdl.context;
 
+import com.social.graphqlsdl.context.dataloader.DataLoaderRegistryFactory;
 import graphql.kickstart.execution.context.GraphQLContext;
 import graphql.kickstart.servlet.context.DefaultGraphQLServletContext;
 import graphql.kickstart.servlet.context.DefaultGraphQLWebSocketContext;
@@ -13,6 +14,13 @@ import javax.websocket.server.HandshakeRequest;
 
 @Component
 public class CustomGraphQLContextBuilder implements GraphQLServletContextBuilder {
+
+    private final DataLoaderRegistryFactory dataLoaderRegistryFactory;
+
+    public CustomGraphQLContextBuilder(DataLoaderRegistryFactory dataLoaderRegistryFactory) {
+        this.dataLoaderRegistryFactory = dataLoaderRegistryFactory;
+    }
+
     @Override
     public GraphQLContext build(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
 
@@ -21,6 +29,7 @@ public class CustomGraphQLContextBuilder implements GraphQLServletContextBuilder
         DefaultGraphQLServletContext servletContext = DefaultGraphQLServletContext.createServletContext()
                 .with(httpServletRequest)
                 .with(httpServletResponse)
+                .with(dataLoaderRegistryFactory.build())
                 .build();
 
         return new CustomGraphQLContext(userId, servletContext);

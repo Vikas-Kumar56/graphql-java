@@ -5,14 +5,14 @@ import com.social.graphqlsdl.dto.AuthorDto;
 import com.social.graphqlsdl.exception.ResourceNotFound;
 import com.social.graphqlsdl.model.Author;
 import com.social.graphqlsdl.repository.AuthorRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class AuthorServiceImpl implements AuthorService {
 
@@ -57,4 +57,18 @@ public class AuthorServiceImpl implements AuthorService {
         Author createdAuthor = authorRepository.saveAndFlush(author);
         return createdAuthor.getId();
     }
+
+    @Override
+    public Map<UUID, AuthorDto> getAllAuthorByIds(Set<UUID> authorIds) {
+        log.info("author ids : {}", authorIds);
+        List<Author> allById = authorRepository.findAllById(authorIds);
+        return allById.stream()
+                .map(author -> AuthorDto.builder()
+                        .id(author.getId())
+                        .email(author.getEmail())
+                        .name(author.getName())
+                        .build())
+                .collect(Collectors.toMap(AuthorDto::getId, author -> author));
+    }
+
 }
