@@ -35,7 +35,14 @@ public class DataLoaderRegistryFactory {
 
     private DataLoader<UUID, AuthorDto> createAuthorDataLoader() {
         return DataLoader.newMappedDataLoader((Set<UUID> authorIds) ->
-                CompletableFuture.supplyAsync(() ->
-                        authorService.getAllAuthorByIds(authorIds), authorThreadPool));
+                CompletableFuture.supplyAsync(() -> {
+                            try {
+                                Thread.sleep(10000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            return authorService.getAllAuthorByIds(authorIds);
+                        }
+                        , authorThreadPool));
     }
 }
