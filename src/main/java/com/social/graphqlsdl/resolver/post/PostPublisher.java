@@ -1,7 +1,6 @@
 package com.social.graphqlsdl.resolver.post;
 
 import com.social.graphqlsdl.dto.PostDto;
-import javafx.geometry.Pos;
 import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Sinks;
